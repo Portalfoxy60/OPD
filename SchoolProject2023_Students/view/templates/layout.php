@@ -28,8 +28,19 @@
 				  <button type="button" class="btn btn-outline-success">Search</button>
 			  </form>
 			  <div class="me-auto navbar-nav">
+				<?php if (!isset($_SESSION['userId'])) { ?>
 				  <a href="login"  class="nav-link">Login</a>
-				  <a href="register"  class="nav-link">Register</a>	
+				  <a href="register"  class="nav-link">Register</a>
+				<?php } elseif (isset($_SESSION['userId'])) { ?>
+				<div class="dropdown ms-5">
+					<a href="#" class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+						<?php echo $_SESSION['name']?>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a href="logout" class="dropdown-item">Logout</a></li>
+					</ul>
+				</div>
+				<?php }	?>
 			  </div>
 		  </div>
 	  </div>

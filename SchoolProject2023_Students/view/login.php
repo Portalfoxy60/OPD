@@ -4,7 +4,7 @@ ob_start();
 
 <h2 class="text-center m-4">Регистрация</h2>
 <div class="container" style="width:450px">
-    <form action="registrationResult.php" method="POST">
+    <form action="loginResult" method="POST">
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" name="email" required>
@@ -16,3 +16,7 @@ ob_start();
         <button type="submit" class="btn btn-primary" name="register">Зарегистрироваться</button>
     </form>
 </div>
+<?php 
+$content = ob_get_clean();
+include "view/templates/layout.php";
+?>
