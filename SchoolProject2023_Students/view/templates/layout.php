@@ -21,7 +21,7 @@
 			  <div class="me-auto navbar-nav">
 				  <a href="./"  class="nav-link">Specialities</a>
 				  <a href="students"  class="nav-link">Students</a>			  
-				  <a href="blog"  class="nav-link">Blog</a>			  
+				  <a href="blocks"  class="nav-link">Block</a>			  
 			  </div>
 			  <form class="d-flex">
 				  <input placeholder="search" type="text" class="me-sm-2 form-control">

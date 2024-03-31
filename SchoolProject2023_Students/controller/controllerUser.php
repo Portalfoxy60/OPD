@@ -6,7 +6,6 @@ class controllerUser {
     
     public static function loginResult(){
         $resultRegIn=modelUser::userLogin();
-        
         include_once('view/loginRegisterResult.php');
         // include_once('model/modelUser.php');
     }

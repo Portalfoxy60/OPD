@@ -22,14 +22,16 @@ $route = explode('/',$path)[$num];
 if($route == '' || $route == 'index'){
 	Controller::startSite();
 } elseif ($route == 'students'){
-	Controller::StudentList();
+	Controller::studentList();
 } elseif ($route == 'studByspec' && isset($_GET['id'])){
-	Controller::StudentByspec($_GET['id']);
+	Controller::studentByspec($_GET['id']);
 } elseif ($route == 'student' && isset($_GET['id'])){
-	Controller::StudentDetail($_GET['id']);
-// } elseif ($route == 'blocks') {
-// 	Controller::blockList();
-} elseif ($route == 'addstudent'){
+	Controller::studentDetail($_GET['id']);
+} elseif ($route == 'blocks') {
+	Controller::blockList();
+} elseif ($route == 'detailnews' && isset($_GET['id'])){
+	Controller::blockDetail($_GET['id']);
+}elseif ($route == 'addStudent'){
 	controllerStudent::addStudentForm();
 } elseif ($route == 'addStudentResult'){
 	controllerStudent::addStudentResult();
