@@ -5,6 +5,8 @@
 <h1 style="margin-left: 550px;">Blog</h1>
 
 
+
+
 <ol class="list-group list-group-numbered" style="float: right;">
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
@@ -39,7 +41,7 @@
               <div class="card-body" >
                   <img class="card-img-top" style="width:40%;" src="images/blocks/'.$block['image'].'">
                   <div class="card-title h5">'.$block['title'].'</div>
-                  <p class="card-text">'.$block['description'].'</p> 
+                  <p class="card-text">'.substr($block['description'], 0, 100).'...</p> 
                   <p class="card-text">Date of publish: '.$block['date'].'</p>
                   <p class="card-text">Category: '.$block['name'].'</p>
                   <a href="detailnews?id='.$block['id'].'">Details...</a>

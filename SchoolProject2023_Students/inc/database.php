@@ -1,6 +1,7 @@
 <?php
 
-class Database {
+class database {
+
     private $conn;
     private $host;
     private $user;
@@ -8,11 +9,11 @@ class Database {
     private $baseName;
 
     function __construct() {
-        $this->host = 'localhost'; // имя хоста
-        $this->user = 'root'; // имя пользователя
-        $this->password = ''; // пароль
-        $this->baseName = 'jktv_school'; // имя базы данных
-        $this->connect(); // метод подключения к базе данных
+		$this->host = 'localhost'; //hostname
+        $this->user = 'root'; //username
+        $this->password = ''; //password
+        $this->baseName = 'jktv_school'; //name of your database        
+        $this->connect(); //метод соединения с базой данных
     }
 
     function __destruct() {
@@ -27,38 +28,55 @@ class Database {
                     $this->user, 
                     $this->password, 
                     array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+					//$this-> conn - идентификатор базы данных
         } catch (Exception $e) {
-            die('Connection failed : '.$e->getMessage());
+            die('Connection failed : '.$e->getMessage());//вывод об ошибке соединения
         }
 
-        return $this->conn;
+        return $this->conn;//$this-> conn - идентификатор базы данных
     }
+    
 
     function disconnect() {
-        if ($this->conn) {
+        if ($this->conn) {// автомтическое выключение/подключение к БД
             $this->conn = null;
+        }
+    }
+//----------ДОБАВЬТЕ МЕТОДЫ ОБРАБОТКИ ЗАПРОСОВ!
+
+    function getOne($query) {
+        try{
+            $result = $this->conn->prepare($query);
+            $result->execute();
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            $response = $result->fetch();
+            return $response;
+        } catch(Exception $ex) {
+            echo "Error:".$ex->getMessage();
         }
     }
 
     function getAll($query) {
-        try {
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
-        } catch (PDOException $e) {
-            die('Query failed: ' . $e->getMessage());
+        try{
+            $result = $this->conn->prepare($query);
+            $result->execute();
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            $response = $result->fetchAll();
+            return $response;
+        } catch(Exception $ex) {
+            echo "Error:".$ex->getMessage();
         }
     }
 
-    function getOne($query) {
-        try {
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $result;
-        } catch (PDOException $e) {
-            die('Query failed: ' . $e->getMessage());
+    function executeRun($query) {
+        try{
+            $response = $this->conn->exec($query);
+            return $response;
+
+        } catch(Exception $ex) {
+            echo "Error:".$ex->getMessage();
         }
     }
-}
+
+}//end class
+?>

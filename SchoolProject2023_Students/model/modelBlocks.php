@@ -29,7 +29,7 @@ class ModelBlocks
         $result=[];
         if (isset($_GET['categoryId'])){
             $categoryId=$_GET['categoryId'];
-            $getsql = "SELECT * from `posts` JOIN  categories ON categories.id = posts.category_id WHERE category_id = $categoryId";
+            $getsql = "SELECT posts.*, categories.id as catId,categories.name from `posts` JOIN  categories ON categories.id = posts.category_id WHERE category_id = $categoryId";
             $database = new database();
             $item = $database->getAll($getsql);
             if ($item==true){
@@ -46,16 +46,25 @@ class ModelBlocks
         return $result;
     }
     public static function getBlockDetail($id){
-        $result=[];
-        if (isset($_GET["id"])){
+        $result = null;
+        if (isset($id)){ 
             $sql = "SELECT * FROM `posts` JOIN  categories ON categories.id = posts.category_id WHERE posts.id = $id";
             $database = new database();
             $item = $database->getOne($sql);
-            if($item == true){
-                $result = true;
+            if($item !== null){
+                $result = $item;
             }
         }
-        return $item;
+        return $result;
+    }
+    public static function getDistinctMonths()
+    {
+        $sql = "SELECT DISTINCT MONTH(date) AS month FROM posts";
+        $database = new database();
+        $months = $database->getAll($sql);
+        return $months;
     }
 }
+
+
 ?>

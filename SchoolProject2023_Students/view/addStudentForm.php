@@ -48,8 +48,9 @@ ob_start();
                     ?>
                 </select>
             </div>
-            <button type="submit" name="save" class="btn btn-primary">Primary</button>
-            <a href="students" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Primary link</a>
+            <button type="submit" name="save" class="btn btn-primary">Save</button>
+		<a class="btn btn-primary" href="students" role="button">Back to list</a>
+		</div>
         </div>
     </form>
 </div>

@@ -28,7 +28,7 @@
                     <div class="wapper row">
                         <?php 
                         echo '<div class="col-md-4">
-                                <img src="images/'.$student['photo'].'"/>
+                                <img class="img" src="images/'.$student['photo'].'"/>
                             </div>
                             <div class="col-md-4">
                                 <h3>First name - '.$student['firstName'].'</h3>

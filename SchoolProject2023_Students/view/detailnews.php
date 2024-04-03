@@ -23,6 +23,7 @@
   </div>
 </div>
 
+
 <?php
     $content = ob_get_clean();
     include "view/templates/layout.php";

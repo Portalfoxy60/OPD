@@ -21,11 +21,11 @@
 			  <div class="me-auto navbar-nav">
 				  <a href="./"  class="nav-link">Specialities</a>
 				  <a href="students"  class="nav-link">Students</a>			  
-				  <a href="blocks"  class="nav-link">Block</a>			  
+				  <a href="blocks"  class="nav-link">Blog</a>			  
 			  </div>
-			  <form class="d-flex">
-				  <input placeholder="search" type="text" class="me-sm-2 form-control">
-				  <button type="button" class="btn btn-outline-success">Search</button>
+			  <form class="d-flex" method="GET" action="search">
+				  <input placeholder="search" type="text" name="text" class="me-sm-2 form-control">
+				  <button type="submit" class="btn btn-outline-success">Search</button>
 			  </form>
 			  <div class="me-auto navbar-nav">
 				<?php if (!isset($_SESSION['userId'])) { ?>
